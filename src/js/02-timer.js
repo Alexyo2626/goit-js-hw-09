@@ -5,6 +5,7 @@ import 'flatpickr/dist/flatpickr.min.css';
 import Notiflix from 'notiflix';
 
 const startBtn = document.querySelector('button[data-start]');
+const inputEl = document.querySelector('#datetime-picker');
 startBtn.addEventListener('click', startTimer);
 startBtn.disabled = 'true'; //неактивная кнопка старт
 let manualSelectedDate = null;
@@ -28,7 +29,7 @@ function checkValidDate(manualSelectedDate) {
     // alert('Please choose a date in the future');
     Notiflix.Notify.failure('Please choose a date in the future');
   } else {
-    startBtn.disabled = '';
+    startBtn.disabled = false;
   }
 }
 
@@ -61,8 +62,9 @@ const minutesEl = document.querySelector('span[data-minutes]');
 const secondsEl = document.querySelector('span[data-seconds]');
 
 //обновление интерфейса таймера
+let remainingTime = null;
 function showRemainingTime() {
-  let remainingTime = manualSelectedDate - new Date();
+  remainingTime = manualSelectedDate - new Date();
   showObjectTime = convertMs(remainingTime);
 
   daysEl.textContent = addLeadingZero(showObjectTime.days);
@@ -73,7 +75,15 @@ function showRemainingTime() {
 
 // запуск таймера
 function startTimer() {
-  setInterval(() => {
+  inputEl.disabled = true;
+  startBtn.disabled = true;
+  const intervalId = setInterval(() => {
     showRemainingTime();
+    if (remainingTime <= 1000) {
+      clearInterval(intervalId);
+      inputEl.disabled = false;
+      startBtn.disabled = false;
+      Notiflix.Notify.success('Finish!');
+    }
   }, 1000);
 }
