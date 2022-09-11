@@ -65,7 +65,7 @@ const secondsEl = document.querySelector('span[data-seconds]');
 let remainingTime = null;
 function showRemainingTime() {
   remainingTime = manualSelectedDate - new Date();
-  showObjectTime = convertMs(remainingTime);
+  const showObjectTime = convertMs(remainingTime);
 
   daysEl.textContent = addLeadingZero(showObjectTime.days);
   hoursEl.textContent = addLeadingZero(showObjectTime.hours);
