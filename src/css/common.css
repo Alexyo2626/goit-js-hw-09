@@ -16,3 +16,41 @@ img {
   display: block;
   max-width: 100%;
 }
+
+.timer-text {
+font-size: 50px;
+margin: 10px;
+margin-left: 40px;
+padding: 10px;
+background-color: gold;
+border-radius: 20px;
+display: inline-block;
+justify-content: center;
+}
+
+.timer {
+  display: flex;
+  justify-content: center;
+}
+
+.field {
+  margin: 20px;
+  padding: 30px;
+  border: 10px solid rgb(151, 151, 245);
+  border-radius: 20px;
+  background-color: rgba(199, 223, 63, 0.932);
+}
+
+.value {
+  display: block;
+ text-align: center;
+  font-weight: bold;
+  font-size: 150px;
+}
+
+.label {
+  display: block;
+  font-size: 40px;
+  text-align: center;
+  
+}
