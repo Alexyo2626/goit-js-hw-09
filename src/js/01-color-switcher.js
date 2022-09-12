@@ -14,12 +14,12 @@ function changeBgColor() {
   timerId = setInterval(() => {
     bodyEl.style.backgroundColor = getRandomHexColor();
   }, 1000);
-  startBtn.disabled = 'true';
+  startBtn.disabled = true;
 }
 
 stopBtn.addEventListener('click', stopChangeBgColor);
 
 function stopChangeBgColor() {
   clearInterval(timerId);
-  startBtn.disabled = '';
+  startBtn.disabled = false;
 }
